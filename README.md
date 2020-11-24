@@ -29,6 +29,13 @@ This will run a single entry from the file in test mode:
 ./gradlew run --args="--input data/manuallyValidated.tsv"
 ```
 
+Note : if you are on a Mac system remove the <<>>
+
+```console
+ export WIKIDATA_USER=foo
+ export WIKIDATA_PASSWORD=bar
+```
+
 This will run the full file in test mode:
 
 ```console
