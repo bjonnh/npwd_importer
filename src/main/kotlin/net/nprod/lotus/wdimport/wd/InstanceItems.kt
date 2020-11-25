@@ -1,6 +1,5 @@
 package net.nprod.lotus.wdimport.wd
 
-import net.nprod.lotus.wdimport.wd.models.RemoteProperty
 import org.eclipse.rdf4j.model.vocabulary.RDFS
 import org.eclipse.rdf4j.sparqlbuilder.core.Prefix
 import org.eclipse.rdf4j.sparqlbuilder.core.SparqlBuilder
@@ -88,7 +87,6 @@ interface InstanceItems {
     val phasmidaTaxonomy: PropertyIdValue
 }
 
-
 object TestInstanceItems : InstanceItems {
     override val siteIri = "http://www.test.wikidata.org/entity/"
     override val sitePageIri = "https://test.wikidata.org/w/index.php?title="
@@ -96,7 +94,7 @@ object TestInstanceItems : InstanceItems {
     override val wdtURI = "http://test.wikidata.org/prop/direct/"
     override val wdURI = "http://test.wikidata.org/entity/"
 
-    //override val ENDPOINT = "https://query.wikidata.org/bigdata/namespace/wdq/sparql"
+    // override val ENDPOINT = "https://query.wikidata.org/bigdata/namespace/wdq/sparql"
     override val sparqlEndpoint: String? = null
     override val wdt: Prefix = SparqlBuilder.prefix("wdt", Rdf.iri(wdtURI))
     override val wd: Prefix = SparqlBuilder.prefix("wd", Rdf.iri(wdURI))
@@ -213,7 +211,6 @@ object MainInstanceItems : InstanceItems {
     // Article
     override val doi = property("P356")
     override val title = property("P1476")
-
 
     // Things
     override val chemicalCompound = item("Q11173")

@@ -12,8 +12,7 @@ fun main() {
 
     // Put here the properties you want to create.
 
-    val propertiesToCopy = listOf<String>(
-    )
+    val propertiesToCopy = listOf<String>()
 
     val publisher = WDPublisher(TestInstanceItems)
 
@@ -31,7 +30,7 @@ fun main() {
         wdSparql.query(
             query
         ) {
-            it.firstOrNull()?.let {bindingSet ->
+            it.firstOrNull()?.let { bindingSet ->
                 val o = bindingSet.getValue("pLabel").stringValue()
                 if (o == null) {
                     println("Problem with $property")
@@ -41,7 +40,7 @@ fun main() {
                         "Some new property for ONPDB"
                     )
 
-                    println("$property => ${prop.toString()} ${prop.iri}")
+                    println("$property => $prop ${prop.iri}")
                 }
             }
         }

@@ -1,11 +1,11 @@
 package net.nprod.lotus.input
 
+import java.io.File
 import net.nprod.lotus.helpers.GZIPReader
 import net.nprod.lotus.helpers.parseTSVFile
 import org.apache.logging.log4j.LogManager
-import java.io.File
 
-fun loadData(fileName: String, skip: Int=0, limit: Int? = null): DataTotal {
+fun loadData(fileName: String, skip: Int = 0, limit: Int? = null): DataTotal {
     val logger = LogManager.getLogger("net.nprod.lotus.chemistry.net.nprod.lotus.tools.wdpropcreator.main")
     val dataTotal = DataTotal()
 

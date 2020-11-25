@@ -1,5 +1,6 @@
 package net.nprod.lotus.wdimport.wd.models
 
+import kotlin.reflect.KProperty1
 import net.nprod.lotus.wdimport.wd.InstanceItems
 import net.nprod.lotus.wdimport.wd.newDocument
 import net.nprod.lotus.wdimport.wd.newStatement
@@ -8,7 +9,6 @@ import net.nprod.lotus.wdimport.wd.statement
 import org.wikidata.wdtk.datamodel.helpers.Datamodel
 import org.wikidata.wdtk.datamodel.interfaces.*
 import org.wikidata.wdtk.wikibaseapi.WikibaseDataFetcher
-import kotlin.reflect.KProperty1
 
 class ElementNotPublishedError(msg: String) : Exception(msg)
 
@@ -95,7 +95,7 @@ abstract class Publishable {
         } ?: listOf()
         println("Existing ids $propertiesIDs")
         println("Existing statemts ${preStatements.map{it.property.get(instanceItems).id}}")
-        return preStatements.filter { statement ->  // Filter statements that already exist and are not overwritable
+        return preStatements.filter { statement -> // Filter statements that already exist and are not overwritable
             statement.overwriteable || !propertiesIDs.contains(statement.property.get(instanceItems).id)
         }.map { statement ->
             when (statement) {

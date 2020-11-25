@@ -1,13 +1,12 @@
 package net.nprod.lotus.wdimport.wd.models
 
-import org.eclipse.rdf4j.sparqlbuilder.rdf.Rdf
-import org.wikidata.wdtk.datamodel.interfaces.ItemIdValue
 import net.nprod.lotus.wdimport.wd.InstanceItems
 import net.nprod.lotus.wdimport.wd.sparql.ISparql
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
+import org.eclipse.rdf4j.sparqlbuilder.rdf.Rdf
 import org.wikidata.wdtk.datamodel.implementation.ItemIdValueImpl
-
+import org.wikidata.wdtk.datamodel.interfaces.ItemIdValue
 
 val taxDBToProperty = mapOf<String, RemoteProperty?>(
     "AmphibiaWeb" to InstanceItems::amphibiaTaxonomy,
@@ -36,7 +35,6 @@ val taxDBToProperty = mapOf<String, RemoteProperty?>(
     "World Register of Marine Species" to InstanceItems::WORMSTaxonomy,
     "ZooBank" to InstanceItems::ZoobankTaxonomy
 )
-
 
 data class WDTaxon(
     override var name: String,

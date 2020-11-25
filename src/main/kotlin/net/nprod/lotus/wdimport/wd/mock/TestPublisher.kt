@@ -1,8 +1,10 @@
 package net.nprod.lotus.wdimport.wd.mock
 
+import java.io.ByteArrayInputStream
+import java.io.ByteArrayOutputStream
 import net.nprod.lotus.wdimport.wd.InstanceItems
-import net.nprod.lotus.wdimport.wd.interfaces.Publisher
 import net.nprod.lotus.wdimport.wd.Resolver
+import net.nprod.lotus.wdimport.wd.interfaces.Publisher
 import net.nprod.lotus.wdimport.wd.models.Publishable
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
@@ -16,9 +18,6 @@ import org.wikidata.wdtk.datamodel.interfaces.*
 import org.wikidata.wdtk.dumpfiles.DumpProcessingController
 import org.wikidata.wdtk.rdf.PropertyRegister
 import org.wikidata.wdtk.rdf.RdfSerializer
-import java.io.ByteArrayInputStream
-import java.io.ByteArrayOutputStream
-
 
 class TestPublisher(override val instanceItems: InstanceItems, val repository: Repository) : Resolver, Publisher {
     private val logger: Logger = LogManager.getLogger(this::class.java)
@@ -57,7 +56,6 @@ class TestPublisher(override val instanceItems: InstanceItems, val repository: R
     override fun publish(publishable: Publishable, summary: String): ItemIdValue {
         logger.debug("Trying to add the publishable: $publishable with a summary $summary")
 
-
         val entityId = ItemIdValueImpl.fromId("Q${counter.toString().padStart(8, '0')}", site)
         counter++
 
@@ -68,7 +66,6 @@ class TestPublisher(override val instanceItems: InstanceItems, val repository: R
         }
 
         val doc = publishable.document(instanceItems, entityId as ItemIdValue)
-
 
         val conn = repository.connection
 

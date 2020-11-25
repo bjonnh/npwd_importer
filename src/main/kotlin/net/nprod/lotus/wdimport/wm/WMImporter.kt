@@ -1,13 +1,10 @@
 package net.nprod.lotus.wdimport.wm
 
+import java.io.IOException
+import javax.security.auth.login.FailedLoginException
 import net.nprod.lotus.wdimport.wd.EnvironmentVariableError
 import org.wikipedia.WMFWiki
 import org.wikipedia.Wiki
-
-import java.io.IOException
-
-import javax.security.auth.login.FailedLoginException
-
 
 class WMConnector() {
     private val user: String = System.getenv("WIKIDATA_USER")

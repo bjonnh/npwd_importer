@@ -9,7 +9,7 @@ import org.wikidata.wdtk.datamodel.implementation.ItemIdValueImpl
 import org.wikidata.wdtk.datamodel.interfaces.ItemIdValue
 
 data class WDCompound(
-    override var name: String="",
+    override var name: String = "",
     val inChIKey: String?,
     val inChI: String?,
     val isomericSMILES: String?,
@@ -63,7 +63,6 @@ data class WDCompound(
 
         return this
     }
-
 
     fun naturalProductOfTaxon(wdTaxon: WDTaxon, f: ReferencableValueStatement.() -> Unit) {
         require(wdTaxon.published) { "Can only add an already published taxon." }

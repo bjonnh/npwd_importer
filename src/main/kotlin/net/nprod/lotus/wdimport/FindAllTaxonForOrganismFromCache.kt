@@ -52,10 +52,8 @@ fun findAllTaxonForOrganismFromCache(dataTotal: DataTotal, wdSparql: ISparql, in
                                 taxonRank = InstanceItems::species
                         ).tryToFind(wdSparql, instanceItems)
                         taxon = speciesWD
-
                     }
                 }
-
             }
         }
 
@@ -72,6 +70,5 @@ fun findAllTaxonForOrganismFromCache(dataTotal: DataTotal, wdSparql: ISparql, in
             publisher.publish(it, "Created a missing taxon")
             organism to it
         }
-
     }.toMap()
 }

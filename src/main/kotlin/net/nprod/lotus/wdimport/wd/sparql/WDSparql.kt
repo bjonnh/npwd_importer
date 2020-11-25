@@ -24,5 +24,4 @@ class WDSparql(override val instanceItems: InstanceItems) : Resolver, ISparql {
             }
         }
     }
-
 }

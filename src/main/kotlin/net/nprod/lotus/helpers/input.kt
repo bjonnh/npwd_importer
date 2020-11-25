@@ -11,14 +11,14 @@ import java.util.zip.GZIPInputStream
  * Returns the full list if lines is null
  */
 
-fun parseTSVFile(file: Reader, lines: Int?= null, skip: Int=0): List<Record>? {
+fun parseTSVFile(file: Reader, lines: Int? = null, skip: Int = 0): List<Record>? {
 
     val settingsParser = TsvParserSettings()
     settingsParser.format.setLineSeparator("\n")
     settingsParser.isHeaderExtractionEnabled = true
     val tsvParser = TsvParser(settingsParser)
 
-    if (lines==null) return tsvParser.parseAllRecords(file)
+    if (lines == null) return tsvParser.parseAllRecords(file)
 
     tsvParser.beginParsing(file)
     var count = 0
@@ -27,9 +27,9 @@ fun parseTSVFile(file: Reader, lines: Int?= null, skip: Int=0): List<Record>? {
     repeat(skip) { tsvParser.parseNextRecord() }
     while (true) {
         record = tsvParser.parseNextRecord()
-        if (count>=lines) break                     // Reached the amount of lines needed
-        if (tsvParser.context.isStopped) break      // The parser stopped
-        if (record == null) break                   // Reached the end of the file
+        if (count >= lines) break // Reached the amount of lines needed
+        if (tsvParser.context.isStopped) break // The parser stopped
+        if (record == null) break // Reached the end of the file
 
         list.add(record)
         count++

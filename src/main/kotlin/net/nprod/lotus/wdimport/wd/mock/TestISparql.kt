@@ -13,7 +13,6 @@ class TestISparql(override val instanceItems: InstanceItems, private val reposit
             conn.close()
             out
         } finally {
-
         }
     }
 }

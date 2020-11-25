@@ -1,5 +1,6 @@
 package net.nprod.lotus.wdimport.wd
 
+import java.net.ConnectException
 import net.nprod.lotus.wdimport.wd.interfaces.Publisher
 import net.nprod.lotus.wdimport.wd.models.Publishable
 import org.apache.logging.log4j.LogManager
@@ -13,11 +14,9 @@ import org.wikidata.wdtk.wikibaseapi.BasicApiConnection
 import org.wikidata.wdtk.wikibaseapi.WikibaseDataEditor
 import org.wikidata.wdtk.wikibaseapi.WikibaseDataFetcher
 import org.wikidata.wdtk.wikibaseapi.apierrors.MediaWikiApiErrorException
-import java.net.ConnectException
 
 class EnvironmentVariableError(message: String) : Exception(message)
 class InternalError(message: String) : Exception(message)
-
 
 class WDPublisher(override val instanceItems: InstanceItems, val pause: Int = 0) : Resolver, Publisher {
     private val userAgent = "Wikidata Toolkit EditOnlineDataExample"
@@ -39,7 +38,6 @@ class WDPublisher(override val instanceItems: InstanceItems, val pause: Int = 0)
         password = System.getenv("WIKIDATA_PASSWORD")
             ?: throw EnvironmentVariableError("Missing environment variable WIKIDATA_PASSWORD")
     }
-
 
     override fun connect() {
         connection = BasicApiConnection.getWikidataApiConnection()
@@ -77,7 +75,6 @@ class WDPublisher(override val instanceItems: InstanceItems, val pause: Int = 0)
                 logger.error("Restarting it…")
                 newProperty(name, description)
             }
-
         } catch (e: MediaWikiApiErrorException) {
             if ("already has label" in e.errorMessage) {
                 logger.error("This property already exists: ${e.errorMessage}")
@@ -114,7 +111,7 @@ class WDPublisher(override val instanceItems: InstanceItems, val pause: Int = 0)
                 logger.info("you can access it at ${instanceItems.sitePageIri}${itemId.id}")
                 publishable.published(itemId)
                 if (pause > 0) Thread.sleep(pause * 1000L)
-            } else {  // The publishable is already existing, this means we only have to update the statements
+            } else { // The publishable is already existing, this means we only have to update the statements
                 updatedDocuments++
                 logger.info("Updated document ${publishable.id} - Summary: $summary")
                 val doc = (fetcher?.getEntityDocument(publishable.id.id)
@@ -139,8 +136,6 @@ class WDPublisher(override val instanceItems: InstanceItems, val pause: Int = 0)
                 }*/
 
                 // We are not doing that as it was overwriting names
-
-
 
                 val statements = publishable.listOfStatementsForUpdate(fetcher, instanceItems).filter {
                     // We filter all the statement that do not already exist

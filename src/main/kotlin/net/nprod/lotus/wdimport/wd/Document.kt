@@ -8,7 +8,6 @@ import org.wikidata.wdtk.datamodel.helpers.ReferenceBuilder
 import org.wikidata.wdtk.datamodel.helpers.StatementBuilder
 import org.wikidata.wdtk.datamodel.interfaces.*
 
-
 /**
  * Type safe builder or DSL
  */

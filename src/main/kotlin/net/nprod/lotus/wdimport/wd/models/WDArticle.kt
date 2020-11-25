@@ -12,14 +12,13 @@ data class WDArticle(
     override var name: String,
     val title: String?,
     val doi: String?
-): Publishable() {
+) : Publishable() {
     override var type = InstanceItems::scholarlyArticle
 
     override fun dataStatements() =
         listOfNotNull(
             title?.let { ReferencableValueStatement.monolingualValue(InstanceItems::title, it) },
             doi?.let { ReferencableValueStatement(InstanceItems::doi, it) })
-
 
     override fun tryToFind(iSparql: ISparql, instanceItems: InstanceItems): WDArticle {
         // In the case of the test instance, we do not have the ability to do SPARQL queries
