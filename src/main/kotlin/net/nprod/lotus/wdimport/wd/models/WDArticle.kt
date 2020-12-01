@@ -7,7 +7,7 @@ import org.wikidata.wdtk.datamodel.implementation.ItemIdValueImpl
 import org.wikidata.wdtk.datamodel.interfaces.ItemIdValue
 import kotlin.reflect.KProperty1
 
-// TODO: Identifiers
+// TODO: Identifiers // LEFTOVER
 
 data class WDArticle(
     override var name: String,

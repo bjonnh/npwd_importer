@@ -108,7 +108,7 @@ object TestInstanceItems : InstanceItems {
     override val chemicalFormula: PropertyIdValue = property("P95465")
     override val instanceOf: PropertyIdValue = wdproperty("P82")
 
-    override val taxonName: PropertyIdValue = wdtproperty("P95494") // This is a random one
+    override val taxonName: PropertyIdValue = wdtproperty("P95494") // This is a random one // LEFTOVER
     override val taxonRank: PropertyIdValue = property("P522")
     override val parentTaxon: PropertyIdValue = property("P2105")
 

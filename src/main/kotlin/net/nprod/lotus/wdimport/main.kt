@@ -126,7 +126,7 @@ fun main(args: Array<String>) {
             title = it.value.title,
             doi = it.value.doi.toUpperCase(), // DOIs are always uppercase
         ).tryToFind(wdFinder, instanceItems)
-        // TODO: Add PMID and PMCID
+        // TODO: Add PMID and PMCID // LEFTOVER
         publisher.publish(article, "upserting article")
         it.value to article
     }.toMap()
