@@ -1,4 +1,8 @@
+# This project is now on [GitLab](https://gitlab.com/lotus7/wikidataLotusImporter)
+
 # Lotus_bot
+
+
 
 This is a Bot for [WikiData](https://www.wikidata.org). It is used to import the data for the LOTUS and the [WikiData Natural Products Chemistry project](https://www.wikidata.org/wiki/Wikidata:WikiProject_Chemistry/Natural_products)
 
